@@ -2,7 +2,8 @@ import os
 import subprocess
 
 def run_model(toolbox_path, model_name, model_args=[]):
-    py = find_python_interpreter()
+    #py = find_python_interpreter()
+    py = 'D:\\Public\\Servers\\Apps\\ArcGIS\\Python27\\ArcGIS10.3\\python'
     print 'using python interpreter {}'.format(py)
     bridge = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'arcpy_bridge.py')
     print 'using bridge file {}'.format(bridge)
