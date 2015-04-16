@@ -10,7 +10,11 @@ def run_model(toolbox_path, model_name,  model_args):
     arcpy.ImportToolbox(toolbox_path, toolbox_name)
     model_func = '{}_{}'.format(model_name, toolbox_name)
     print 'about to run model {}'.format(model_func)
-    return getattr(arcpy, model_func)(*model_args)
+
+    if model_args:
+        return getattr(arcpy, model_func)(*model_args)
+    else:
+        return getattr(arcpy, model_func)()
 
 def main():
     funcs = {}
