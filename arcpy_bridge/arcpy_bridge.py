@@ -3,16 +3,13 @@ import os
 import arcpy
 import sys
 
-def run_model(toolbox_path, model_name, model_args):
+def run_model(toolbox_path, model_name, model_args=None):
     print 'running model'
     toolbox_name = os.path.splitext(os.path.split(toolbox_path)[1])[0]
-    print 'original model args'
-    print model_args
-    model_args = model_args.split(',')
+    model_args = model_args and model_args.split(',') or model_args
     arcpy.ImportToolbox(toolbox_path, toolbox_name)
     model_func = '{}_{}'.format(model_name, toolbox_name)
     print 'about to run model {}'.format(model_func)
-    print model_args
     if model_args:
         return getattr(arcpy, model_func)(*model_args)
     else:
