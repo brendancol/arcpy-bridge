@@ -13,10 +13,11 @@ def run_model(toolbox_path, model_name,  model_args):
     return getattr(arcpy, model_func)(*model_args)
 
 def main():
+    funcs = {}
+    funcs['run_model'] = run_model
     bridge_func = sys.argv[1]
     bridge_args = sys.argv[2:]
-    print locals()
-    return locals()[bridge_func](*bridge_args)
+    return funcs[bridge_func](*bridge_args)
 
 if __name__ == '__main__':
     main()
