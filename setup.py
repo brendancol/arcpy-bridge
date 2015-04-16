@@ -15,7 +15,6 @@ setup(
     name='arcpy-bridge',
     version='0.0.1',
     description='Wrapper to spawn arcpy processes',
-    long_description=long_description,
     url='https://github.com/brendancol/arcpy-bridge',
     author='Brendan Collins',
     author_email='brendancol@gmail.com',
