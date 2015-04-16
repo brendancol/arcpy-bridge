@@ -15,7 +15,7 @@ def run_model(toolbox_path, model_name, model_args=None):
 
 def find_python_interpreter():
     for v in ['C:/', 'D:/']:
-        for dirname, dirnames, filenames in os.walk(v, topdown=true):
+        for dirname, dirnames, filenames in os.walk(v, topdown=True):
             dirnames[:] = [d for d in dirnames if 'arcgis10' in d.lower() and 'python' in d.lower()]
             print dirname, dirnames, filenames
             for f in filenames:
