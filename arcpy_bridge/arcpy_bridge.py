@@ -6,7 +6,7 @@ import sys
 def run_model(toolbox, model_name, model_args):
     model_args = model_args.split(',')
     arcpy.ImportToolbox(toolbox, model_name)
-    return eetattr(arcpy, 'Model_' + model_name)(*model_args)
+    return getattr(arcpy, 'Model_' + model_name)(*model_args)
 
 def main():
     bridge_func = sys.argv[1]
