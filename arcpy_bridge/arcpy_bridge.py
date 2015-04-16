@@ -3,9 +3,11 @@ import os
 import arcpy
 import sys
 
-def run_model(toolbox_path, model_name,  model_args):
+def run_model(toolbox_path, model_name, model_args):
     print 'running model'
     toolbox_name = os.path.splitext(os.path.split(toolbox_path)[1])[0]
+    print 'original model args'
+    print model_args
     model_args = model_args.split(',')
     arcpy.ImportToolbox(toolbox_path, toolbox_name)
     model_func = '{}_{}'.format(model_name, toolbox_name)
