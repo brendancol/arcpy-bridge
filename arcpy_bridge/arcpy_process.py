@@ -1,15 +1,16 @@
 import os
 import subprocess
 
-def run_model(toolbox_path, model_name, model_args=[]):
+def run_model(toolbox_path, model_name, model_label, model_args=[]):
     py = find_python_interpreter()
     print 'using python interpreter {}'.format(py)
     bridge = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'arcpy_bridge.py')
     print 'using bridge file {}'.format(bridge)
 
     bridge_args = ','.join([str(a) for a in model_args])
-    proc = subprocess.Popen([py, bridge,  'run_model', toolbox_path, model_name, bridge_args], stdout=subprocess.PIPE, shell=True)
-    return proc.communicate()
+    proc = subprocess.Popen([py, bridge,  'run_model', toolbox_path, model_name, model_label, bridge_args], stdout=subprocess.PIPE, shell=True)
+    results, err = proc.communicate()
+    return results, err
 
 def find_python_interpreter():
     for v in ['C:/', 'D:/']:
