@@ -8,18 +8,16 @@ def run_model(toolbox_path, model_name, model_args=None):
     print 'using bridge file {}'.format(bridge)
     print model_args    
     bridge_args = model_args and ','.join([str(a) for a in model_args]) or model_args
-
     proc = subprocess.Popen([py, bridge, 'run_model', toolbox_path, model_name, bridge_args], stdout=subprocess.PIPE, shell=True)
     results, err = proc.communicate()
     return results, err
 
-def find_python_interpreter():
+def find_python_interpreter(64_bit=True):
     for v in ['C:/', 'D:/']:
-        for dirname, dirnames, filenames in os.walk(v, topdown=True):
-            dirnames[:] = [d for d in dirnames if 'arcgis10' in d.lower() and 'python' in d.lower()]
-            print dirname, dirnames, filenames
-            for f in filenames:
-                if 'python27.exe' in f:
-                    return os.path.join(dirname, f)
-
+        for dirname, dirnames, filenames in scandir.walk(v):
+            if all([s in dirname.lower() for s in ['python','arcgis']]):
+                print dirname, dirnames, filenames
+                for f in filenames:
+                    if 'python27.exe' in f.lower():
+                        return os.path.join(dirname, f)
     raise Exception('Unable to find ArcGIS python interpreter')

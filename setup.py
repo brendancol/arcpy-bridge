@@ -4,8 +4,8 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
-INSTALL_REQUIRES = [
-]
+with open('requirements.txt') as f:
+    requires  = f.read().splitlines()
 
 TESTS_REQUIRES = [
 
@@ -27,7 +27,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     packages=find_packages(),
-    install_requires=INSTALL_REQUIRES,
+    install_requires=requires,
     tests_require=TESTS_REQUIRES,
     keywords='fme esri python arcpy',
 )
