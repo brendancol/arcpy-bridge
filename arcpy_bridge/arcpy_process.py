@@ -12,7 +12,7 @@ def run_model(toolbox_path, model_name, model_args=None):
     results, err = proc.communicate()
     return results, err
 
-def find_python_interpreter(64_bit=True):
+def find_python_interpreter(x64=True):
     for v in ['C:/', 'D:/']:
         for dirname, dirnames, filenames in os.walk(v):
             if all([s in dirname.lower() for s in ['python','arcgis']]):
