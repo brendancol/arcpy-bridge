@@ -7,6 +7,8 @@ here = path.abspath(path.dirname(__file__))
 with open('requirements.txt') as f:
     requires  = f.read().splitlines()
 
+requires = []
+
 TESTS_REQUIRES = [
 
 ]
