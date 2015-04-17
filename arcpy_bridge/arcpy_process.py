@@ -14,12 +14,10 @@ def run_model(toolbox_path, model_name, model_args=None):
 
 def find_python_interpreter(x64=True):
 
-    install_hints = ['python27']
-
     if x64:
-        install_hints.append('arcgisx6410.')
+        arcpy_folder_start = 'arcgisx6410.'
     else:
-        install_hints.append('arcgis10.')
+        arcpy_folder_start = 'arcgis10.'
 
     for v in ['C:/', 'D:/']:
         
@@ -27,10 +25,7 @@ def find_python_interpreter(x64=True):
             continue
 
         for dirname, dirnames, filenames in os.walk(v):
-            dir_lower = dirname.lower()
-            if all([s in dir_lower for s in install_hints]):
-                for f in filenames:
-                    print dirname, f
-                    if 'python27.exe' in f.lower():
-                        return os.path.join(dirname, f)
+            if os.path.split(dirname)[1].lower().startswith(arcpy_folder_start):
+                return os.path.join(dirname, 'python.exe')
+
     raise Exception('Unable to find ArcGIS python interpreter')
