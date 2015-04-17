@@ -14,7 +14,7 @@ def run_model(toolbox_path, model_name, model_args=None):
 
 def find_python_interpreter(64_bit=True):
     for v in ['C:/', 'D:/']:
-        for dirname, dirnames, filenames in scandir.walk(v):
+        for dirname, dirnames, filenames in os.walk(v):
             if all([s in dirname.lower() for s in ['python','arcgis']]):
                 print dirname, dirnames, filenames
                 for f in filenames:
