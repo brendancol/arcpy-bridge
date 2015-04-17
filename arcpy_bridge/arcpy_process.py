@@ -25,7 +25,7 @@ def find_python_interpreter(x64=False):
             continue
 
         for dirname, dirnames, filenames in os.walk(v):
-            if os.path.split(dirname)[1].lower().startswith(arcpy_folder_start):
+            if 'Python27' in dirname and os.path.split(dirname)[1].lower().startswith(arcpy_folder_start):
                 return os.path.join(dirname, 'python.exe')
 
     raise Exception('Unable to find ArcGIS python interpreter')
