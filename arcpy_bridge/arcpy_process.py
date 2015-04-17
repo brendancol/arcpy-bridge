@@ -19,7 +19,7 @@ def find_python_interpreter(x64=False):
     else:
         arcpy_folder_start = 'arcgis10.'
 
-    for v in ['C:/', 'D:/']:
+    for v in ['C:\\', 'D:\\']:
         
         if not os.path.exists(v):
             continue
