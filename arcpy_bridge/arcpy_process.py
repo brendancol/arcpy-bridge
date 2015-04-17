@@ -12,7 +12,7 @@ def run_model(toolbox_path, model_name, model_args=None):
     results, err = proc.communicate()
     return results, err
 
-def find_python_interpreter(x64=True):
+def find_python_interpreter(x64=False):
 
     if x64:
         arcpy_folder_start = 'arcgisx6410.'
